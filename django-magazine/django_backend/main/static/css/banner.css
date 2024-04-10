@@ -1,0 +1,18 @@
+.banner{
+    width: 100%;
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(/static/images/banner_bg.png) white;
+}
+
+.banner_item_image img{
+    margin-right: 20px;
+}
+
+.banner_item_desc p{
+    color: #414141;
+    font-size: 48px;
+    font-weight: 500;
+}

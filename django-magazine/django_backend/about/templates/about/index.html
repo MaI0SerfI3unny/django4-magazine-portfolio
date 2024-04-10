@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="about">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <div><a href="/">Главная</a></div>
+                    <img src="{% static 'images/additional_shape.svg' %}">
+                    <div><a href="/about">Про нас</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="about_banner">
+            <div class="container">
+                <div>
+                    <h2>О компании</h2>
+                    <p>Мы непрерывно развиваемся и  работаем над совершенствованием сервиса, заботимся о наших клиентах,  стремимся к лучшему будущему.</p>
+                </div>
+                <div>
+                    <img src="{% static 'images/about/about_layer.png' %}">
+                </div>
+            </div>
+        </div>
+
+        <div class="about_prefferences">
+            <div class="container">
+                <div class="about_prefferences_item">
+                    <div>
+                        <img src="{% static 'images/about/check.png' %}">
+                    </div>
+                    <div>
+                        <p class="about_prefferences_item_title">Мы занимаемся розничной торговлей</p>
+                        <p class="about_prefferences_item_desc">Более 20 лет.</p>
+                    </div>
+                </div>
+                <div class="about_prefferences_item">
+                    <div>
+                        <img src="{% static 'images/about/check.png' %}">
+                    </div>
+                    <div>
+                        <p class="about_prefferences_item_title">Основная миссия компании</p>
+                        <p class="about_prefferences_item_desc">Максимальное качество товаров и услуг по доступной цене.</p>
+                    </div>
+                </div>
+                <div class="about_prefferences_item">
+                    <div>
+                        <img src="{% static 'images/about/check.png' %}">
+                    </div>
+                    <div>
+                        <p class="about_prefferences_item_title">Отличительная черта нашей сети</p>
+                        <p class="about_prefferences_item_desc">Здоровая и полезная продукция местного производства внаших магазинах.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="about_attention">
+            <div class="about_attention_content">
+                <img src="{% static 'images/about/logo_about.png' %}">
+                <div class="about_attention_text">
+                    <p>Спасибо за то, что вы с нами. Северяночка, везет всегда!</p>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

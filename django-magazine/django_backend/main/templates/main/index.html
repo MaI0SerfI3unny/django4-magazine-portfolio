@@ -1,0 +1,228 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="banner">
+            <div class="banner_item_image">
+                <img src="{% static 'images/banner_main.png' %}">
+            </div>
+            <div class="banner_item_desc">
+                <p>Доставка безкоштовна від 1000 UAH</p>
+            </div>
+        </div>
+
+        <div class="discount">
+            <div class="container">
+                <div class="header_articles">
+                    <div><h2>Акції</h2></div>
+                    <div><a href="/discount">Усі акції <img src="{% static 'images/additional_shape.svg' %}"></a></div>
+                </div>
+
+                <div class="product_container">
+                    {% for item in discount %}
+                        <div class="product_item">
+                        <a href="/catalog/{{ item.cat }}/{{ item.slug }}">
+                            <div class="product_item_img_layout">
+                                <img class="img_main" src="/uploads/{{ item.link_img }}">
+                                <div class="discount_container_percent">
+                                    <p>-{{ item.discount  }}%</p>
+                                </div>
+
+                                <div class="like_container">
+                                    <img src="{% static 'images/heart.svg' %}">
+                                </div>
+                            </div>
+
+                            <div class="product_content">
+                                <div class="product_item_main_info">
+                                    <div>
+                                        <p class="price_card">{{ item.discounted_price }} UAH</p>
+                                        <p class="price_subtext">Зі знижкою</p>
+                                    </div>
+                                    <div>
+                                        <p class="price_main">{{ item.price }} UAH</p>
+                                        <p class="price_subtext">Звичайне</p>
+                                    </div>
+                                </div>
+
+                                <div class="product_item_description">
+                                     <p>{{ item.title |truncatechars:35 }}</p>
+                                </div>
+
+                                <a href=""><button>В корзину</button></a>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="container">
+                <div class="header_articles">
+                    <div><h2>Новинки</h2></div>
+                    <div><a href="/products">Все новинки <img src="{% static 'images/additional_shape.svg' %}"></a></div>
+                </div>
+                <div class="product_container">
+
+                    {% for item in product %}
+                        <div class="product_item">
+                        <a href="/catalog/{{ item.cat }}/{{ item.slug }}">
+                            <div class="product_item_img_layout">
+                                <img class="img_main" src="/uploads/{{ item.link_img }}">
+
+                                <div class="like_container">
+                                    <img src="{% static 'images/heart.svg' %}">
+                                </div>
+                            </div>
+
+                            <div class="product_content">
+                                <div class="product_item_main_info">
+                                    <div>
+                                        <p class="price_card">{{ item.price }} UAH</p>
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </div>
+
+                                <div class="product_item_description">
+                                    <p>{{ item.title |truncatechars:35 }}</p>
+                                </div>
+
+                                <a href=""><button>В корзину</button></a>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+
+        <div class="product">
+            <div class="container">
+                <div class="header_articles">
+                    <div><h2>Покупали раньше</h2></div>
+                    <div><a href="">Все покупки <img src="{% static 'images/additional_shape.svg' %}"></a></div>
+                </div>
+
+                <div class="product_container">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="special">
+            <div class="container">
+                <div class="header_articles">
+                  <h2>Специальные предложения</h2>
+                </div>
+
+                <div class="special_body">
+                    <div class="special_item">
+                       <div>
+                            <p class="special_item_title">Оформите карту «Северяночка»</p>
+                            <p class="special_item_desc">И получайте бонусы при покупке в магазинах и на сайте</p>
+                       </div>
+                        <div>
+                            <img src="{% static 'images/special/special1.png' %}">
+                        </div>
+                    </div>
+                    <div class="special_item">
+                       <div>
+                            <p class="special_item_title">Покупайте акционные товары</p>
+                            <p class="special_item_desc">И получайте вдвое больше бонусов</p>
+                       </div>
+                        <div>
+                            <img src="{% static 'images/special/special2.png' %}">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="map">
+            <div class="container">
+                <div class="header_articles">
+                  <h2>Наши магазины</h2>
+                </div>
+                <div class="map_body">
+
+                    {% for map_btn in maps %}
+                        <button id="btn{{ map_btn.id }}" class="map_change_btn" onclick="showBlock('block_{{ map_btn.id }}')">{{ map_btn.title }}</button>
+                    {% endfor %}
+
+                    {% for map in maps %}
+                        <div id="block_{{ map.id }}" class="block">
+                            <iframe
+                                src="{{ map.link_map }}"
+                                width="100%"
+                                height="450"
+                                style="border:0;"
+                                allowfullscreen=""
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    {% endfor %}
+
+                    <script>
+                        document.querySelectorAll('.block').forEach(block => {
+                           block.style.display = 'none';
+                        });
+                        const elem = document.getElementById("block_1");
+                        const elem_btn = document.getElementById("btn1");
+                        elem.style.display = 'block';
+                        elem_btn.style.background = '#70C05B';
+                        elem_btn.style.color = 'white';
+
+                        function showBlock(blockId) {
+                            const findIdBtn = document.getElementById(`btn${blockId.split("_")[1]}`)
+                            document.querySelectorAll('.block').forEach((block, index) => {
+                                block.style.display = 'none';
+
+                                try{
+                                    const findBtn = document.getElementById(`btn${index+1}`)
+                                    findBtn.style.background = '#F3F2F1';
+                                    findBtn.style.color = '#606060';
+                                }catch(e){}
+                            });
+
+                            document.getElementById(blockId).style.display = 'block';
+                            findIdBtn.style.background = '#70C05B';
+                            findIdBtn.style.color = 'white';
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="articles">
+            <div class="container">
+                <div class="header_articles">
+                    <div><h2>Статьи</h2></div>
+                    <div><a href="/articles">Все статьи <img src="{% static 'images/additional_shape.svg' %}"></a></div>
+                </div>
+                <div class="articles_content">
+                    <div class="container">
+                        {% for i in articles %}
+                            <div class="block">
+                                <div class="articles_image_layout"><img src="/uploads/{{ i.link_img }}"></div>
+                                <div class="content_article_container">
+                                    <p class="date_articles">{{ i.time_created|date:"d.m.Y" }}</p>
+                                    <h3>{{ i.title |truncatechars:55 }}</h3>
+                                    <p style="height:72px" class="content_article">{{ i.description |truncatechars:100 }}</p>
+                                    <a class="button_article" href="/articles/{{ i.slug }}"><button>Подробнее</button></a>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="about">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <div><a href="/">Головна</a></div>
+                    <img src="{% static 'images/additional_shape.svg' %}">
+                    <div><a href="/catalog">Каталог</a></div>
+                    <img src="{% static 'images/additional_shape.svg' %}">
+                    <div><a href="/catalog/{{ category.slug }}">{{ category.title }}</a></div>
+                    <img src="{% static 'images/additional_shape.svg' %}">
+                    <div><a href="/catalog/{{ category.slug }}/{{ product.slug }}">{{ product.title }}</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="single_container_product">
+            <div class="container">
+                <div style="width: 100%">
+                    <h1>{{ product.title }}</h1>
+                    <div class="single_container_subcontainer">
+                        <div class="single_container_product_img">
+                            <img src="/uploads/{{ product.link_img }}">
+                        </div>
+                        <div class="single_container_detail">
+                            <div>
+                                <p class="price_regular">{{ product.price }} UAH</p>
+                                <button class="bougth_btn">В корзину</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

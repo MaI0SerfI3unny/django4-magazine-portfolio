@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<main>
+    <div class="about">
+        <div class="container">
+            <div class="breadcrumbs">
+                <div><a href="/">Главная</a></div>
+                <img src="{% static 'images/additional_shape.svg' %}">
+                <div><a href="/vacancy/{{ content.id }}">{{ content.title }}</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="about">
+        <div class="container">
+            <div class="content_vacancy">
+                <h1>{{ content.title }}</h1>
+                <p class="content_vacancy_title">Обов'язки:</p>
+                <p>{{ content.requirements|safe }}</p>
+
+                <p class="content_vacancy_title">Відповідальність:</p>
+                <p>{{ content.responsibilities|safe }}</p>
+
+                <p class="content_vacancy_title">Вимоги</p>
+                <p>{{ content.conditions|safe }}</p>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

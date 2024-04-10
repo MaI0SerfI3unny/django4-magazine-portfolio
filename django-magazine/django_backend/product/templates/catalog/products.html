@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="about">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <div><a href="/">Головна</a></div>
+                    <img src="{% static 'images/additional_shape.svg' %}">
+                    <div><a href="/products">Новинки</a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contacts">
+            <div class="container">
+                <h2>Новинки</h2>
+
+                <div class="catalog_all_container">
+                    <div class="catalog_all_container_item">
+                        <p>Фільтри</p>
+                    </div>
+                    <div class="catalog_all_container_item">
+                        <div class="product_container">
+
+                            {% for item in products %}
+                                <div class="product_item">
+                        <a href="/catalog/{{ category.slug }}/{{ item.slug }}">
+                            <div class="product_item_img_layout">
+                                <img class="img_main" src="/uploads/{{ item.link_img }}">
+                                {% if item.discount != 0 %}
+                                <div class="discount_container_percent">
+                                    <p>-{{ item.discount  }}%</p>
+                                </div>
+                                {% endif %}
+                                <div class="like_container">
+                                    <img src="{% static 'images/heart.svg' %}">
+                                </div>
+                            </div>
+
+                            <div class="product_content">
+                                <div class="product_item_main_info">
+                                    {% if item.discount != 0 %}
+                                        <div>
+                                            <p class="price_card">{{ item.discounted_price }} UAH</p>
+                                            <p class="price_subtext">Со скидкой</p>
+                                        </div>
+                                    {% else %}
+                                        <div></div>
+                                    {% endif %}
+                                    <div>
+                                        <p class="price_main">{{ item.price }} UAH</p>
+                                        <p class="price_subtext">Обычная</p>
+                                    </div>
+                                </div>
+
+                                <div class="product_item_description">
+                                     <p>{{ item.title |truncatechars:35 }}</p>
+                                </div>
+
+                                <a href=""><button>В корзину</button></a>
+                            </div>
+                        </a>
+                    </div>
+                            {% endfor %}
+                        </div>
+                        <div class="pagination_container">
+                            {% if products.paginator.num_pages > 10 %}
+                                <div>
+                                    {% if products.has_previous %}
+                                        <a href="?page=1"><<</a>
+                                        <a href="?page={{ products.previous_page_number }}"><</a>
+                                    {% endif %}
+
+                                    {{ products.number }}
+                                    {% for num in products.paginator.page_range %}
+                                        {% if num == products.number %}
+                                            <span>{{ num }}</span>
+                                        {% else %}
+                                            <a href="?page={{ num }}">{{ num }}</a>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if products.has_next %}
+                                        <a href="?page={{ products.next_page_number }}"> > </a>
+                                        <a href="?page={{ products.paginator.num_pages }}"> >> </a>
+                                    {% endif %}
+                                </div>
+                            {% else %}
+                                <div>
+                                    {% if products.has_previous %}
+                                        <a href="?page=1"><<</a>
+                                        <a href="?page={{ products.previous_page_number }}"><</a>
+                                    {% endif %}
+
+                                    {% for num in products.paginator.page_range %}
+                                        {% if num == products.number %}
+                                            <span>{{ num }}</span>
+                                        {% elif num <= 3 or num > products.paginator.num_pages|add:"-3" or num|add:"-1" == products.number or num|add:"1" == products.number %}
+                                            <a href="?page={{ num }}">{{ num }}</a> <!-- Посилання на перші та останні три цифри поточної сторінки та її сусідніх сторінок -->
+                                        {% elif num == 4 or num > products.paginator.num_pages|add:"-4" %}
+                                            <span>...</span>
+                                        {% endif %}
+                                    {% endfor %}
+
+                                    {% if products.has_next %}
+                                        <a href="?page={{ products.next_page_number }}"> > </a>
+                                        <a href="?page={{ products.paginator.num_pages }}"> >> </a>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

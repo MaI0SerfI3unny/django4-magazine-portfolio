@@ -1,0 +1,32 @@
+
+.map{
+    margin-top: 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.map .container{
+    display: block;
+}
+
+.map_body{
+    margin-top: 40px;
+}
+
+.map_change_btn{
+    background: #F3F2F1;
+    color: #606060;
+    min-width: 86px;
+    height: 32px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    margin-right: 20px;
+    margin-bottom: 30px
+}
+
+.map h3{
+    color: #414141;
+    font-size: 36px;
+    font-weight: bold;
+}

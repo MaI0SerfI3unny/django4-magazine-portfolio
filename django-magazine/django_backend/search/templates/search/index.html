@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="product">
+            <div class="container">
+                <div class="header_articles">
+                    <div><h2>Результат поиска</h2></div>
+                    <div></div>
+                </div>
+
+                <div style="padding-bottom: 60px" class="product_container">
+                    {% for item in products %}
+                        <div class="product_item">
+                        <a href="/catalog/{{ item.cat }}/{{ item.slug }}">
+                            <div class="product_item_img_layout">
+                                <img class="img_main" src="/uploads/{{ item.link_img }}">
+                                {% if item.discount != 0 %}
+                                <div class="discount_container_percent">
+                                    <p>-{{ item.discount  }}%</p>
+                                </div>
+                                {% endif %}
+                                <div class="like_container">
+                                    <img src="{% static 'images/heart.svg' %}">
+                                </div>
+                            </div>
+
+                            <div class="product_content">
+                                <div class="product_item_main_info">
+                                    {% if item.discount != 0 %}
+                                        <div>
+                                            <p class="price_card">{{ item.discounted_price }} UAH</p>
+                                            <p class="price_subtext">Со скидкой</p>
+                                        </div>
+                                    {% else %}
+                                        <div></div>
+                                    {% endif %}
+                                    <div>
+                                        <p class="price_main">{{ item.price }} UAH</p>
+                                        <p class="price_subtext">Обычная</p>
+                                    </div>
+                                </div>
+
+                                <div class="product_item_description">
+                                     <p>{{ item.title |truncatechars:35 }}</p>
+                                </div>
+
+                                <a href=""><button>В корзину</button></a>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+    </main>
+{% endblock %}

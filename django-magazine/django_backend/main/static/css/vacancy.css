@@ -1,0 +1,85 @@
+.grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 10px;
+            padding-bottom: 120px;
+}
+
+.grid-container a{
+    text-decoration: unset;
+}
+
+.grid-item {
+    background-color: white;
+    border-radius: 4px;
+    padding: 32px;
+}
+
+.grid-item h3{
+   font-size: 20px;
+   color: #414141;
+}
+
+.vacancy_title{
+    font-size: 18px;
+    color: #414141;
+    margin-top: 20px;
+}
+
+.vacancy_desc{
+    font-size: 16px;
+    color: #414141;
+    margin-top: 10px;
+    font-weight: 300;
+    line-height: 30px;
+}
+
+.grid-item ul{
+    list-style: none;
+    font-size: 16px;
+    color: #414141;
+    margin-top: 10px;
+    font-weight: 300;
+    line-height: 30px;
+}
+
+.vacancy_phone_container{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.vacancy_phone_container img{
+    margin-right: 10px;
+}
+
+.vacancy_phone_container p{
+    font-size: 18px;
+    font-weight: 400;
+    color: #414141;
+}
+
+.content_vacancy{
+    margin-top: 60px;
+    margin-bottom: 60px;
+    width: 100%;
+}
+
+.content_vacancy h1{
+    margin-bottom: 50px;
+}
+
+.content_vacancy p,
+.content_vacancy li{
+    font-size: 18px;
+    line-height:30px;
+}
+
+.content_vacancy_title{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}

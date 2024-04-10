@@ -1,0 +1,48 @@
+.contacts{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.contacts h2{
+    color: #414141;
+    font-size: 64px;
+    margin-bottom: 60px;
+    font-weight: 700;
+}
+
+.contacts .container{
+    display: block;
+}
+
+.main_info_contact_item img{
+    margin-right: 10px;
+}
+
+.main_info_contact_item_title{
+    margin-bottom: 20px;
+    color: #414141;
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.main_info_contact_item_phone{
+    color: #414141;
+    font-size: 24px;
+    font-weight:700;
+}
+
+.main_info_contact{
+    display: flex;
+    margin-bottom: 120px;
+}
+
+.main_info_contact_item{
+    margin-right: 80px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.main_info_contact_item:last-child{
+    margin-right: 0;
+}

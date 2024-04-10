@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="articles">
+            <div class="container">
+                <div class="header_articles">
+                    <div><h2>Статьи</h2></div>
+                    <div><a href="/">Назад <img src="{% static 'images/additional_shape.svg' %}"></a></div>
+                </div>
+                <div class="articles_content_all">
+                    <div class="container">
+
+                        {% for i in articles %}
+                            <div class="block">
+                                <div class="articles_image_layout"><img src="/uploads/{{ i.link_img }}"></div>
+                                <div class="content_article_container">
+                                    <p class="date_articles">{{ i.time_created|date:"d.m.Y" }}</p>
+                                    <h3>{{ i.title |truncatechars:55 }}</h3>
+                                    <p style="height:72px" class="content_article">{{ i.description |truncatechars:100 }}</p>
+                                    <a class="button_article" href="/articles/{{ i.slug }}"><button>Подробнее</button></a>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

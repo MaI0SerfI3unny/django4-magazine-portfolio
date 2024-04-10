@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="about">
+            <div class="container">
+                <div class="breadcrumbs">
+                    <div><a href="/">Главная</a></div>
+                    <img src="{% static 'images/additional_shape.svg' %}">
+                    <div><a href="/contacts">Вакансии</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="contacts">
+            <div class="container">
+                <h2>Вакансии</h2>
+
+                <div class="grid-container">
+                    {% for i in vacancy %}
+                        <a href="/vacancy/{{ i.id }}">
+                        <div class="grid-item">
+                            <h3>{{ i.title }}</h3>
+
+                            <p class="vacancy_title">Требования</p>
+                            <p class="vacancy_desc"><ul>{{ i.requirements|safe|truncatechars:100 }}</ul></p>
+
+                            <p class="vacancy_title">Обязанности</p>
+                            <p class="vacancy_desc"><ul>{{ i.responsibilities|safe|truncatechars:100 }}</ul></p>
+
+                            <p class="vacancy_title">Условия</p>
+                            <p class="vacancy_desc">{{ i.conditions| safe| truncatechars:100 }}</p>
+
+                            <p class="vacancy_title">Звоните</p>
+                            <div class="vacancy_phone_container">
+                                <img src="{% static 'images/phone_vacancy.svg' %}">
+                                <p>+7 904 271 35 90</p>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

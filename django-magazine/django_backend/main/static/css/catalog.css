@@ -1,0 +1,98 @@
+.grid_container_catalog {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 стовпці */
+    grid-auto-rows: auto; /* автоматично розмір рядків */
+    gap: 20px; /* відступи між елементами */
+    margin-bottom: 120px;
+}
+
+.catalog_item {
+    height: 200px;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    grid-column: span 1;
+    cursor: pointer;
+}
+
+.catalog_item img{
+    position: relative;
+    width: 100%;
+    height: -webkit-fill-available;
+}
+
+.catalog_item a{
+    width: 100%;
+    height: -webkit-fill-available;
+}
+
+.catalog_item div h2{
+    font-size: 16px;
+    color: white;
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+.catalog_item div{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: #70C05B;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 -10px 10px #70C05B;
+}
+
+.catalog_item:hover div{
+    transition: 0.5s;
+    background: #FF6633;
+    box-shadow: 0 -10px 10px #FF6633;
+}
+
+.catalog_item:nth-child(1),
+ .catalog_item:nth-child(10){
+    grid-column: span 2;
+}
+
+.catalog_all_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.catalog_all_container .catalog_all_container_item:first-child{
+    min-width: 272px;
+}
+
+.catalog_all_container .catalog_all_container_item:last-child{
+    min-width: 896px;
+}
+
+.catalog_all_container_item .product_container{
+    gap: 15px;
+}
+
+.catalog_all_container_item .product_item_description p {
+    font-size: 14px;
+}
+
+.catalog_all_container{
+    margin-bottom: 120px;
+}
+
+.catalog_all_container .product_container{
+    margin-top: 0;
+}
+
+.pagination_container{
+    margin-top: 50px;
+    display: inline-flex;
+    gap: 20px;
+}
+
+.pagination_container a{
+    color: #606060;
+    text-decoration: none;
+}
